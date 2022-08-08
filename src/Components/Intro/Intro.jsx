@@ -10,11 +10,14 @@ import prof from "../../img/port1.png";
 import thumbup from "../../img/thumbup.png";
 import Crown from "../../img/crown.png";
 import glassesimoji from "../../img/glassesimoji.png";
-
 import { themeContext } from "../../Context";
 import { useContext } from "react";
+import { motion } from "framer-motion";
+import { Link } from "react-scroll";
 
 const Intro = () => {
+  const transition = { duration: 2, type: "spring" };
+
   const theme = useContext(themeContext);
   const darkMode = theme.state.darkMode;
   return (
@@ -24,11 +27,15 @@ const Intro = () => {
           <span style={{ color: darkMode ? "white" : "" }}>Hy! I Am</span>
           <span>Anoop Kumar</span>
           <span>
-            Full Stack MERN Developer, Data Scientist with intermediate level of
-            working exprience. Always producing the Quality Work
+            I am a MERN Stack developer with a good command over the tools. I
+            also have decent skills in Data Analysis with Python. Strong
+            creative and analytical skills with Computer Science Literacy. Team
+            player with an eye for detail and a Problem solver.
           </span>
         </div>
-        <button className="button i-button">Hire me</button>
+        <Link to="contact" spy={true} smooth={true}>
+          <button className="button i-button">Hire me</button>
+        </Link>
         <div className="i-icons">
           <a href="https://github.com/quanoop">
             <img src={Github} alt="Githum Icon" />
@@ -36,7 +43,7 @@ const Intro = () => {
           <a href="https://www.linkedin.com/in/anoop-rajput-857a59206/">
             <img src={LinkedIn} alt="LinkedIn icon" />
           </a>
-          <a href="#">
+          <a href="https://www.instagram.com/aksr0_/">
             <img src={Instagram} alt="Instagram Icon" />
           </a>
         </div>
@@ -46,13 +53,32 @@ const Intro = () => {
         <img src={Vector1} alt="" />
         <img src={Vector2} alt="" />
         <img src={prof} alt="" />
-        <img src={glassesimoji} alt="" />
-        <div style={{ top: "-4%", left: "68%" }}>
+        <motion.img
+          initial={{ left: "-36%" }}
+          whileInView={{ left: "-24%" }}
+          transition={transition}
+          src={glassesimoji}
+          className="floating-div"
+          alt=""
+        />
+        <motion.div
+          initial={{ top: "-4%", left: "74%" }}
+          whileInView={{ left: "68%" }}
+          transition={transition}
+          className="floating-div"
+          style={{ top: "-4%", left: "68%" }}
+        >
           <FloatingDiv image={Crown} text1="Web" text2="Developer" />
-        </div>
-        <div style={{ top: "18rem", left: "0rem" }}>
-          <FloatingDiv image={thumbup} text1="Data" text2="Scientist" />
-        </div>
+        </motion.div>
+        <motion.div
+          initial={{ left: "9rem", top: "18rem" }}
+          whileInView={{ left: "0rem" }}
+          transition={transition}
+          className="floating-div"
+          style={{ top: "18rem", left: "0rem" }}
+        >
+          <FloatingDiv image={thumbup} text1="Data" text2="Analyst" />
+        </motion.div>
         {/* blur divs*/}
         <div className="blur" style={{ background: "rgb(238 210 255)" }}></div>
         <div
